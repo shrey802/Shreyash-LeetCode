@@ -1,0 +1,19 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        int countlen = 0;
+        if (!s.isEmpty()) {
+            for (int i = s.length() - 1; i >= 0; i--) {
+                if (s.charAt(i) == ' ') {
+                    // this condition helps in example 2 as it has an empty space right at the end so it loops because the empty space doesn't increament countlen. 
+                    if (countlen > 0) {
+                        break;
+                    }
+                } else {
+                    countlen++;
+                }
+            }
+        }
+
+        return countlen;
+    }
+}
