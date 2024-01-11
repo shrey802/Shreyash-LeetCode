@@ -1,0 +1,29 @@
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        // we store unique email addresses in set that is the feature of Set
+        Set<String> set = new HashSet();
+        // we take the count of unique email addresses
+        int count = 0;
+        // we loop throught email addresses
+        for(String email:emails){
+            // we store the local email in localname
+            String localname;
+            // we check if '+' is present in email 
+            if(email.indexOf('+')>=0){
+                // if '+' is present then we take the localname from 0 index to character       before '+'
+                localname = email.substring(0, email.indexOf('+'));
+            }else{
+                // we take local email till @
+                localname = email.substring(0, email.indexOf('@'));
+            }
+            // we remove the '.' as per the rule and concatenate the domain name starting from @
+            localname = localname.replace(".", "") + email.substring(email.indexOf('@'));
+            // we add local email and increament count and it won't add and increament if the email is not unique 
+            if(set.add(localname)){
+                count++;
+            }
+        }
+        // we return unique email addresses
+        return count;
+    }
+}
