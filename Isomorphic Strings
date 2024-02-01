@@ -1,0 +1,35 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character, Character> map1 = new HashMap<>();
+        HashMap<Character, Boolean> map2 = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            char fst = s.charAt(i);
+            char snd = t.charAt(i);
+            // we take each character of 2 strings and we compare
+
+            // first we check if fst is mapped to snd in map1
+            if(map1.containsKey(fst) == true){
+                // if it is mapped we check the value if value is same 
+                // then we move else false because 2 characters cannot map to same key
+
+                if(map1.get(fst)!=snd){
+                    return false;
+                }
+            }else{
+                // fst and snd are not mapped so we come here
+
+                // we check if snd is already used 
+                if(map2.containsKey(snd) == true){
+                    return false;
+                }else{
+                    // if everything is good we map everything and move on with new characters
+                    map1.put(fst, snd);
+                    map2.put(snd, true);
+                }
+
+            }
+
+        }
+        return true;
+    }
+}
