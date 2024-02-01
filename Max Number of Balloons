@@ -1,0 +1,41 @@
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        String balloon = "balloon";
+        if(text.length() < balloon.length()){
+            return 0;
+        }
+        int count = 0;
+        int b=0, a=0, l=0, o=0, n=0;
+        for(char ch: text){
+            switch(ch){
+                  case 'b': 
+                      b++;
+                      break;
+                  case 'a': 
+                      a++;
+                      break;
+                  case 'l': 
+                      l++;
+                      break;
+                  case 'o': 
+                      o++;
+                      break;
+                  case 'n': 
+                      n++;
+                      break;
+                  default:
+                      break;
+            }
+          if(b>=1 && a>=1 && l>=2 && o>=2 && n>=1){
+              count++;
+              b--;
+              a--;
+              l-=2;
+              o-=2;
+              n--;
+          }
+        }
+        return count;
+    }
+
+}
