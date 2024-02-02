@@ -1,0 +1,18 @@
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+    // size of array is n and we have to find the missing numbers from 1 to n that are not present in that array
+
+    int n = nums.length;
+    Set<Integer> store = new HashSet<>();
+    for(int num: nums){
+        store.add(num);
+    }
+    ArrayList<Integer> list = new ArrayList<>();
+    for(int i=1; i<=n; i++){
+        if(!store.contains(i)){
+            list.add(i);
+        }
+    }
+    return list;
+    }
+}
