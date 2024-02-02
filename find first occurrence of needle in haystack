@@ -1,0 +1,16 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        // we need to find needle string in haystack string if we find then we return the index else -1
+        if(needle.length()>haystack.length()) return -1;
+        if(needle.length()==haystack.length()){
+            if(haystack.contains(needle)){
+                return 0;
+            }else{
+                return -1;
+            }
+        }
+        if(needle.length()==0) return 0;
+        return haystack.indexOf(needle);
+        
+    }
+}
