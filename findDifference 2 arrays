@@ -1,0 +1,32 @@
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<List<Integer>> answer =  new ArrayList<>();
+        List<Integer> innerList1 = new ArrayList<Integer>();
+        List<Integer> innerList2 = new ArrayList<Integer>();
+        Set<Integer> s1 = new HashSet<Integer>();
+        Set<Integer> s2 = new HashSet<Integer>();
+        for(int n1: nums1){
+            s1.add(n1);
+        }
+        for(int n2: nums2){
+            s2.add(n2);
+        }
+        // s1, s2 stores all unique elements (not repeated)
+        for(int num: s1){
+            // if elements in s1 are not present in s2 means that element is distinct so we add
+            if(s2.contains(num) == false){
+                innerList1.add(num);
+            }
+        }
+
+        for(int num: s2){
+            // if elements in s2 are not present in s1 means that element is distinct so we add
+            if(s1.contains(num) == false){
+                innerList2.add(num);
+            }
+        }
+        answer.add(innerList1);
+        answer.add(innerList2);
+        return answer;
+    }
+}
