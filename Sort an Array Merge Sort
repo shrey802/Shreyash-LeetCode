@@ -1,0 +1,49 @@
+++class Solution{
+  public int[] sortArray(int[] nums){
+      // merge sort
+      // divide code
+      int inputLength = nums.length;
+      int midIndex = inputLength/2;
+      int[] leftHalf = new int[midIndex];
+      int[] rightHalf = new int[inputLength - midIndex];
+      for(int i=0; i<midIndex; i++){
+          leftHalf[i] = nums[i];
+      }
+      for(int j=midIndex; j<inputLength; j++){
+          rightHalf[j-midIndex] = nums[j];
+      }
+      leftHalf = sortArray(leftHalf);
+      rightHalf = sortArray(rightHalf);
+      int[] ans = conquer(leftHalf, rightHalf);
+      return ans;
+  }
+
+  private int[] conquer(int[] leftarr, int[] rightarr){
+      // conquer code 
+      int leftSize = leftarr.length;
+      int rightSize = rightarr.length;
+      int[] inputArray = new int[leftSize + rightSize];
+      int i=0, j=0, k=0;
+      while(i<leftSize && j<rightSize){
+          if(leftarr[i]<=rightarr[i]){
+              inputArray[k] = leftarr[i];
+              i++;
+          }else{
+              inputArray[k] = rightarr[j];
+              j++;
+          }
+          k++;
+      }
+      while(i<leftSize){
+              inputArray[k] = leftarr[i];
+              i++;
+              k++;
+      }
+      while(j<rightSize){
+              inputArray[k] = rightarr[j];
+              j++;
+              k++;
+      }
+      return inputArray;
+  }
+}
